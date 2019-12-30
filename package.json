@@ -11,7 +11,8 @@
         "classnames": "^2.2.6",
         "moment": "^2.24.0",
         "preact": "^10.0.5",
-        "preact-router": "^3.1.0"
+        "preact-router": "^3.1.0",
+        "unistore": "^3.5.1"
     },
     "devDependencies": {
         "@babel/core": "^7.6.4",
@@ -52,6 +53,7 @@
         "stylelint": "^11.1.1",
         "stylelint-config-standard": "^19.0.0",
         "stylelint-prettier": "^1.1.1",
+        "tailwindcss": "^1.1.4",
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.10",
         "webpack-dev-server": "^3.9.0"

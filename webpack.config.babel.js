@@ -9,6 +9,7 @@ import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import tailwindcss from 'tailwindcss';
 
 module.exports = (env, argv) => {
   const dirDist = path.resolve(__dirname, 'dist');
@@ -119,7 +120,7 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /\.(s*)css$/,
+          test: /\.css$/,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
@@ -132,7 +133,10 @@ module.exports = (env, argv) => {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: () => [require('autoprefixer')],
+                plugins: () => [
+                  tailwindcss('./tailwind.config.js'),
+                  require('autoprefixer'),
+                ],
               },
             },
             {
