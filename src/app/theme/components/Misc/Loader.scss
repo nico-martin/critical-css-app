@@ -1,0 +1,20 @@
+.loader {
+  min-height: 7vmin;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5vmin;
+    height: 5vmin;
+    margin-left: -2.5vmin;
+    margin-top: -2.5vmin;
+    display: block;
+    border: 0.4vmin solid var(--c-p);
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: spinner 700ms infinite linear;
+  }
+}

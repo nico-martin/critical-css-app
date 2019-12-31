@@ -134,6 +134,7 @@ module.exports = (env, argv) => {
               loader: 'postcss-loader',
               options: {
                 plugins: () => [
+                  require('postcss-nested'),
                   tailwindcss('./tailwind.config.js'),
                   require('autoprefixer'),
                 ],
@@ -147,6 +148,10 @@ module.exports = (env, argv) => {
       alias: {
         '@': dirSrc,
         '@vendor': `${dirSrc}/vendor/`,
+        '@theme': `${dirSrc}/app/theme/`,
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
       },
     },
   };
