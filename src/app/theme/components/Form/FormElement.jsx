@@ -17,22 +17,24 @@ const FormElement = (props: Props) => {
     <Fragment>
       <div
         className={cn(props.className, 'mt-4', {
-          flex: props.inline,
+          'md:flex': props.inline,
         })}
       >
         <label
           className={cn(
             'block text-gray-700 text-sm font-bold items-center py-2',
             {
-              'mb-2': !props.inline,
-              'w-1/4': props.inline,
+              'md:mb-2': !props.inline,
+              'md:w-1/4': props.inline,
             }
           )}
           htmlFor={props.id}
         >
           {props.label}
         </label>
-        <div className={cn({ 'w-3/4': props.inline, 'pl-2': props.inline })}>
+        <div
+          className={cn({ 'md:w-3/4': props.inline, 'md:pl-2': props.inline })}
+        >
           {props.Field}
         </div>
       </div>
