@@ -3,6 +3,7 @@ export { default as ButtonGroup } from './components/Button/ButtonGroup.jsx';
 export { default as Icon } from './components/Icon/Icon.jsx';
 export { default as Form } from './components/Form/Form.jsx';
 export { default as FormFieldset } from './components/Form/FormFieldset.jsx';
+export { default as FormElement } from './components/Form/FormElement.jsx';
 export { default as FormControls } from './components/Form/FormControls.jsx';
 export { default as FormError } from './components/Form/FormError.jsx';
 export { default as FormSuccess } from './components/Form/FormSuccess.jsx';

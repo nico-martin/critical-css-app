@@ -56,6 +56,7 @@ const example = () => {
             label="Name"
             placeholder="Muster"
             register={{ required: 'This field is required' }}
+            inline
           />
           <InputText
             name="vorname"
@@ -68,6 +69,7 @@ const example = () => {
                 message: 'At least 11 characters',
               },
             }}
+            inline
           />
           <InputText
             name="email"
@@ -81,7 +83,6 @@ const example = () => {
               },
             }}
             type="email"
-            large
           />
         </FormFieldset>
         <FormFieldset legend="About">
@@ -92,7 +93,7 @@ const example = () => {
             register={{ required: 'This field is required' }}
             value="hallo welt"
             rows={10}
-            large
+            inline
           />
         </FormFieldset>
         <FormFieldset>
@@ -108,7 +109,7 @@ const example = () => {
               torhueter: 'Torhüter',
             }}
             value="verteidiger"
-            large
+            inline
           />
         </FormFieldset>
         <FormControls>

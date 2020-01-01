@@ -1,14 +1,3 @@
-.form {
-
-  &__fieldset {
-    @apply mt-4;
-  }
-
-  &__element + .form__element {
-    @apply mt-4;
-  }
-}
-
 /*
 .form {
   &__fieldset {

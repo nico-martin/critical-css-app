@@ -10,10 +10,9 @@ type Props = {
   onSubmit: Function,
   className?: string,
   childen?: any,
-  oneliner?: boolean,
 };
 
-const Form = ({ onSubmit, className, children, oneliner, ...rest }: Props) => {
+const Form = ({ onSubmit, className, children, ...rest }: Props) => {
   const methods = useForm();
   return (
     <FormContext {...methods}>

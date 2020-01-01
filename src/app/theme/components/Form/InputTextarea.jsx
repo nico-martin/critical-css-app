@@ -5,12 +5,12 @@ import { useState } from 'preact/hooks';
 import cn from 'classnames';
 import { ConnectForm } from './ConnectForm.jsx';
 import { uniqueId } from '@vendor/helpers.js';
+import { FormElement } from '@theme';
 
 type Props = {
   name: string,
   label: string,
   register: Object,
-  large?: boolean,
   rows?: number,
   value?: string,
   placeholder?: string,
@@ -18,6 +18,7 @@ type Props = {
   classNameLabel?: string,
   classNameInput?: string,
   onKeyPress?: Function,
+  inline?: boolean,
 };
 
 const Textarea = (props: Props) => {
@@ -25,33 +26,28 @@ const Textarea = (props: Props) => {
   return (
     <ConnectForm>
       {({ register, errors }) => (
-        <div className={cn(props.className, 'form__element')}>
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor={id}
-          >
-            {props.label}
-          </label>
-          <textarea
-            className={cn(
-              'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-              errors[name] ? 'border-red-500' : '',
-              props.classNameInput
-            )}
-            name={props.name}
-            id={id}
-            ref={register(props.register)}
-            defaultValue={props.value}
-            placeholder={props.placeholder}
-            rows={props.rows}
-            onKeyPress={e => props.onKeyPress(e)}
-          />
-          {errors[props.name] && (
-            <span className={cn('text-red-500 text-xs italic')}>
-              {errors[props.name].message}
-            </span>
-          )}
-        </div>
+        <FormElement
+          id={id}
+          label={props.label}
+          error={errors[name] ? errors[name].message : false}
+          inline={props.inline}
+          Field={
+            <textarea
+              className={cn(
+                'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
+                errors[name] ? 'border-red-500' : '',
+                props.classNameInput
+              )}
+              name={props.name}
+              id={id}
+              ref={register(props.register)}
+              defaultValue={props.value}
+              placeholder={props.placeholder}
+              rows={props.rows}
+              onKeyPress={e => props.onKeyPress(e)}
+            />
+          }
+        />
       )}
     </ConnectForm>
   );
@@ -59,13 +55,13 @@ const Textarea = (props: Props) => {
 
 Textarea.defaultProps = {
   register: {},
-  large: false,
   rows: 4,
   value: '',
   placeholder: '',
   className: '',
   classNameLabel: '',
   classNameInput: '',
+  inline: false,
 };
 
 export default Textarea;

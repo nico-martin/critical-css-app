@@ -11,8 +11,8 @@ type Props = {
 
 const FormFieldset = (props: Props) => {
   return (
-    <div className={cn('form__fieldset', props.className)}>
-      {props.legend !== '' && <h2 className="form__legend">{props.legend}</h2>}
+    <div className={cn({ 'mt-4': props.legend }, props.className)}>
+      {props.legend !== '' && <h2>{props.legend}</h2>}
       {props.children}
     </div>
   );

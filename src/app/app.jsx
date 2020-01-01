@@ -13,7 +13,7 @@ const App = () => {
   if (userID === 0) {
     return (
       <Fragment>
-        <Onboarding />
+        {false && <Onboarding />}
         <Example />
       </Fragment>
     );

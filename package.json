@@ -61,7 +61,7 @@
     "author": "Nico Martin",
     "license": "GPL-3.0+",
     "scripts": {
-        "start": "yarn serve & yarn build",
+        "dev": "yarn serve & yarn build",
         "prod": "yarn update & yarn build:prod",
         "build": "webpack -d --watch",
         "build:prod": "webpack -p",
