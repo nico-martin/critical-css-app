@@ -112,8 +112,8 @@ const example = () => {
             inline
           />
         </FormFieldset>
+        {error !== '' && <FormError>{error}</FormError>}
         <FormControls>
-          {error !== '' && <FormError>{error}</FormError>}
           <Button
             text="Primary"
             type="submit"
