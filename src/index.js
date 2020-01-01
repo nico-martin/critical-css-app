@@ -1,6 +1,6 @@
 // @flow
 
-import './app/app.jsx';
+import './App.jsx';
 import './styles.css';
 import { isDev } from '@vendor/helpers';
 

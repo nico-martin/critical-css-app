@@ -14,17 +14,18 @@ type Props = {
 
 const FormElement = (props: Props) => {
   return (
-    <Fragment>
+    <div className="mb-4">
       <div
-        className={cn(props.className, 'mt-4', {
+        className={cn({
           'md:flex': props.inline,
         })}
       >
         <label
           className={cn(
-            'block text-gray-700 text-sm font-bold items-center py-2',
+            'block text-gray-700 text-sm font-bold items-center mb-2',
             {
-              'md:mb-2': !props.inline,
+              'md:mb-0': props.inline,
+              'md:py-2': props.inline,
               'md:w-1/4': props.inline,
             }
           )}
@@ -43,7 +44,7 @@ const FormElement = (props: Props) => {
           {props.error}
         </p>
       )}
-    </Fragment>
+    </div>
   );
 };
 

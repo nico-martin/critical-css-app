@@ -148,7 +148,9 @@ module.exports = (env, argv) => {
       alias: {
         '@': dirSrc,
         '@vendor': `${dirSrc}/vendor/`,
-        '@theme': `${dirSrc}/app/theme/`,
+        '@theme': `${dirSrc}/theme/`,
+        '@app': `${dirSrc}/components/`,
+        '@store': `${dirSrc}/store/`,
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
