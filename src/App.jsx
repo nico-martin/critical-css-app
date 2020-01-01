@@ -1,40 +1,49 @@
+// @flow
+
 import { render, h, Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
-import { Router } from 'preact-router';
-import { Link } from 'preact-router/match';
+//import { Router } from 'preact-router';
+//import { Link } from 'preact-router/match';
 import idb from '@store/storeIDB';
 import axios from 'axios';
-import { apiBase } from '@vendor/config';
 import Onboarding from '@app/Onboarding/Onboadring.jsx';
+import { Provider, connect } from 'unistore/preact';
+import { store, storeUserActions } from '@store';
 
-console.log(process.env);
-
-const App = () => {
-  const [loading: boolean, setLoading] = useState(true);
-  const [userID: number, setUserID] = useState(0);
-
+const App = connect(
+  'user',
+  storeUserActions
+)(({ user, fetchMe, setFalseUser }) => {
   useEffect(async () => {
     const jwt = await idb.get('jwt');
     if (!jwt) {
-      setLoading(false);
+      setFalseUser();
     } else {
-      axios.defaults.headers.common = { Authorization: 'Bearer ' + jwt };
-      axios
-        .get(`${apiBase}user/me/`)
-        .then(resp => console.log(resp))
-        .catch(error => console.log(error));
+      axios.defaults.headers.common = {
+        Authorization: 'Bearer ' + jwt,
+      };
+      fetchMe();
     }
   }, []);
 
-  if (loading) {
-    return;
-  }
-
-  if (userID === 0) {
+  if (user === false) {
     return <Onboarding />;
   }
 
-  return <p>test</p>;
-};
+  if (Object.keys(user).length === 0) {
+    return;
+  }
 
-render(<App />, document.querySelector('#app'));
+  return (
+    <p>
+      Logged In as {user.email} {user.firstname}
+    </p>
+  );
+});
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('#app')
+);

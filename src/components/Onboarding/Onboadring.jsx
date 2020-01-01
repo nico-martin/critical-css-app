@@ -16,16 +16,23 @@ import axios from 'axios';
 import idb from '@store/storeIDB';
 import { useState } from 'preact/hooks';
 import { apiBase } from '@vendor/config';
+import { connect } from 'unistore/preact';
+import { storeUserActions } from '@store/index';
 
-const onboarding = () => {
+const onboarding = connect(
+  'user',
+  storeUserActions
+)(({ fetchMe }) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
+
   return (
     <div className="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 px-3 py-10 bg-gray-200 flex justify-center">
       <div className="w-full max-w-xs">
         <Form
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           onSubmit={data => {
+            setError('');
             setFormProcessing(true);
             axios
               .post(`${apiBase}user/signin/`, {
@@ -37,12 +44,12 @@ const onboarding = () => {
                 axios.defaults.headers.common = {
                   Authorization: 'Bearer ' + resp.data.token,
                 };
-                axios
-                  .get(`${apiBase}user/me/`)
-                  .then(({ data }) => console.log(data))
-                  .catch(err => console.log(err));
+                fetchMe();
               })
-              .catch(err => console.log('ERR', err));
+              .catch(err => {
+                setError('Email or password are not correct');
+                setFormProcessing(false);
+              });
           }}
         >
           <InputText
@@ -83,6 +90,6 @@ const onboarding = () => {
       </div>
     </div>
   );
-};
+});
 
 export default onboarding;
