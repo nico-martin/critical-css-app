@@ -5,8 +5,13 @@ import devtools from 'unistore/devtools';
 import type { User } from '@vendor/types';
 import axios from 'axios';
 import { apiBase } from '@vendor/config';
+import { defaultLocale, locales } from '@vendor/intl';
 
-const initialState = { user: {} };
+const initialState = {
+  user: {},
+  intlLocale: defaultLocale,
+  intlMessages: locales[defaultLocale][1],
+};
 export const store =
   process.env.NODE_ENV === 'production'
     ? createStore(initialState)
@@ -27,4 +32,9 @@ export const storeUserActions = store => ({
   },
   setEmptyUser: ({ user }) => ({ user: {} }),
   setFalseUser: ({ user }) => ({ user: false }),
+});
+
+export const storeLocaleActions = store => ({
+  setIntlLocale: ({ intlLocale }, locale) => ({ intlLocale: locale }),
+  setIntlMessages: ({ intlMessages }, messages) => ({ intlMessages: messages }),
 });

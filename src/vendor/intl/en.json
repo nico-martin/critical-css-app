@@ -1,0 +1,9 @@
+{
+  "form.required": "This field is required",
+  "form.required.email": "This field should be a valid Email",
+  "onboarding.signin": "Sign in",
+  "onboarding.join": "Join the beta! Contact me on {email}",
+  "onboarding.credentials.email": "Email",
+  "onboarding.credentials.password": "Password",
+  "onboarding.credentials.invalid": "Email or password are not correct"
+}

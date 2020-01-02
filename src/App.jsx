@@ -4,11 +4,12 @@ import { render, h, Fragment } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 //import { Router } from 'preact-router';
 //import { Link } from 'preact-router/match';
+import { IntlProvider } from 'react-intl';
 import idb from '@store/storeIDB';
 import axios from 'axios';
-import Onboarding from '@app/Onboarding/Onboadring.jsx';
 import { Provider, connect } from 'unistore/preact';
 import { store, storeUserActions } from '@store';
+import Onboarding from '@app/Onboarding/Onboadring.jsx';
 
 const App = connect(
   'user',
@@ -41,9 +42,17 @@ const App = connect(
   );
 });
 
+const IntlApp = connect(['intlLocale', 'intlMessages'])(
+  ({ intlLocale, intlMessages }) => (
+    <IntlProvider locale={intlLocale} messages={intlMessages}>
+      <App />
+    </IntlProvider>
+  )
+);
+
 render(
   <Provider store={store}>
-    <App />
+    <IntlApp />
   </Provider>,
   document.querySelector('#app')
 );

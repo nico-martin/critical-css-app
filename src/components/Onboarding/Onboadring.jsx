@@ -1,4 +1,5 @@
 // @flow
+
 import React from 'react';
 import { render, h } from 'preact';
 import {
@@ -18,6 +19,7 @@ import { useState } from 'preact/hooks';
 import { apiBase } from '@vendor/config';
 import { connect } from 'unistore/preact';
 import { storeUserActions } from '@store/index';
+import { useIntl } from 'react-intl';
 
 const onboarding = connect(
   'user',
@@ -25,6 +27,7 @@ const onboarding = connect(
 )(({ fetchMe }) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
+  const { formatMessage } = useIntl();
 
   return (
     <div className="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-4 px-3 py-10 bg-gray-200 flex justify-center">
@@ -47,7 +50,9 @@ const onboarding = connect(
                 fetchMe();
               })
               .catch(err => {
-                setError('Email or password are not correct');
+                setError(
+                  formatMessage({ id: 'onboarding.credentials.invalid' })
+                );
                 setFormProcessing(false);
               });
           }}
@@ -56,10 +61,10 @@ const onboarding = connect(
             name="email"
             label="Email"
             register={{
-              required: 'This field is required',
+              required: formatMessage({ id: 'form.required' }),
               pattern: {
                 value: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: 'has to be an Email',
+                message: formatMessage({ id: 'form.required.email' }),
               },
             }}
             type="email"
@@ -68,25 +73,27 @@ const onboarding = connect(
             name="password"
             label="Password"
             register={{
-              required: 'This field is required',
+              required: formatMessage({ id: 'form.required' }),
             }}
             type="password"
           />
           {error !== '' && <FormError>{error}</FormError>}
           <FormControls>
             <Button
-              text="Primary"
+              text={formatMessage({ id: 'onboarding.signin' })}
               type="submit"
               loading={formProcessing}
               style="primary"
             />
+            <Button text="reset Password" style="nobutton" />
           </FormControls>
         </Form>
-        {/*
         <p className="text-center text-gray-500 text-xs">
-          &copy;2019 Acme Corp. All rights reserved.
+          {formatMessage(
+            { id: 'onboarding.join' },
+            { email: <a href="mailto:nico@sayhello.ch">nico@sayhello.ch</a> }
+          )}
         </p>
-        */}
       </div>
     </div>
   );
