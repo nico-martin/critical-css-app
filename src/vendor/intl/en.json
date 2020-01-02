@@ -1,6 +1,7 @@
 {
   "form.required": "This field is required",
   "form.required.email": "This field should be a valid Email",
+  "footer.about": "critical-css.io is a service by {sayhello}",
   "onboarding.signin": "Sign in",
   "onboarding.join": "Join the beta! Contact me on {email}",
   "onboarding.credentials.email": "Email",

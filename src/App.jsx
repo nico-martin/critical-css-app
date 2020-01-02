@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h, Fragment } from 'preact';
+import { render, h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 //import { Router } from 'preact-router';
 //import { Link } from 'preact-router/match';
@@ -10,6 +10,7 @@ import axios from 'axios';
 import { Provider, connect } from 'unistore/preact';
 import { store, storeUserActions } from '@store';
 import Onboarding from '@app/Onboarding/Onboadring.jsx';
+import Page from '@app/Page.jsx';
 
 const App = connect(
   'user',
@@ -35,11 +36,7 @@ const App = connect(
     return;
   }
 
-  return (
-    <p>
-      Logged In as {user.email} {user.firstname}
-    </p>
-  );
+  return <Page />;
 });
 
 const IntlApp = connect(['intlLocale', 'intlMessages'])(
