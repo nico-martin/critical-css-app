@@ -2,9 +2,17 @@
   "form.required": "This field is required",
   "form.required.email": "This field should be a valid Email",
   "footer.about": "critical-css.io is a service by {sayhello}",
-  "onboarding.signin": "Sign in",
+  "modal.cancel": "cancel",
+  "modal.confirm": "confirm",
+  "modal.error": "Something went wrong",
+  "onboarding.signin": "SignIn",
+  "onboarding.resetpw": "Reset Password",
+  "onboarding.resetpw.desc": "You will receive an email with a temporary password.",
+  "onboarding.resetpw.failed": "The password could not be reset",
+  "onboarding.resetpw.success": "A temporary password was generated and sent to you by e-mail.",
   "onboarding.join": "Join the beta! Contact me on {email}",
   "onboarding.credentials.email": "Email",
   "onboarding.credentials.password": "Password",
+  "onboarding.credentials.rememberme": "Remember me",
   "onboarding.credentials.invalid": "Email or password are not correct"
 }

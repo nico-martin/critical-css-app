@@ -6,12 +6,19 @@ import { useForm, useFormContext, FormContext } from 'react-hook-form';
 
 type Props = {
   onSubmit: Function,
+  defaultValues?: Object,
   className?: string,
   childen?: any,
 };
 
-const Form = ({ onSubmit, className, children, ...rest }: Props) => {
-  const methods = useForm();
+const Form = ({
+  onSubmit,
+  className = '',
+  children,
+  defaultValues = {},
+  ...rest
+}: Props) => {
+  const methods = useForm({ defaultValues });
   return (
     <FormContext {...methods}>
       <form

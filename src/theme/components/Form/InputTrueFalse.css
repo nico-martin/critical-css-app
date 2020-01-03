@@ -1,0 +1,43 @@
+.input-true-false {
+
+  input {
+    @apply opacity-0 absolute;
+  }
+
+  input + label {
+    @apply text-sm block relative py-2;
+    padding-left: 2em;
+
+    &:after, &:before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 1em;
+      height: 1em;
+      margin-top: -.5em;
+      content: '';
+    }
+
+    &:before {
+      @apply border rounded shadow border-gray-400;
+      transform: scale(1.1);
+    }
+
+    &:after {
+      @apply text-gray-600 opacity-0;
+      border-bottom: 3px solid currentColor;
+      border-right: 3px solid currentColor;
+      width: .5em;
+      left: .25em;
+      transform: scale(.7) rotate(30deg) ;
+    }
+  }
+
+  input:checked + label:after {
+    @apply opacity-100;
+  }
+
+  input:focus + label:before {
+    @apply shadow-outline;
+  }
+}

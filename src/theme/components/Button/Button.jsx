@@ -12,7 +12,9 @@ type Props = {
   icon?: string,
   disabled?: boolean,
   loading?: boolean,
-  style?: 'primary' | 'secondary' | 'alt' | 'nobutton',
+  style?: 'primary' | 'secondary' | 'nobutton',
+  small?: boolean,
+  large?: boolean,
 };
 
 const Button = ({
@@ -23,6 +25,7 @@ const Button = ({
   loading,
   style,
   large,
+  small,
   ...rest
 }: Props) => {
   return (
@@ -30,6 +33,7 @@ const Button = ({
       className={cn(className, 'button', `button--${style}`, {
         'button--loading': loading,
         'button--large': large,
+        'button--small': small,
       })}
       disabled={loading || disabled}
       {...rest}

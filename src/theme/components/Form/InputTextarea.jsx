@@ -12,7 +12,6 @@ type Props = {
   label: string,
   register: Object,
   rows?: number,
-  value?: string,
   placeholder?: string,
   className?: string,
   classNameLabel?: string,
@@ -29,7 +28,7 @@ const Textarea = (props: Props) => {
         <FormElement
           id={id}
           label={props.label}
-          error={errors[name] ? errors[name].message : false}
+          error={errors[props.name] ? errors[props.name].message : false}
           inline={props.inline}
           Field={
             <textarea
@@ -41,7 +40,6 @@ const Textarea = (props: Props) => {
               name={props.name}
               id={id}
               ref={register(props.register)}
-              defaultValue={props.value}
               placeholder={props.placeholder}
               rows={props.rows}
               onKeyPress={e => props.onKeyPress(e)}
@@ -56,7 +54,6 @@ const Textarea = (props: Props) => {
 Textarea.defaultProps = {
   register: {},
   rows: 4,
-  value: '',
   placeholder: '',
   className: '',
   classNameLabel: '',

@@ -6,10 +6,31 @@ import cn from 'classnames';
 type Props = {
   id: string,
   label?: string,
+  doNotLabel?: boolean,
   Field: any,
   error?: string,
   inline?: boolean,
   className?: string,
+};
+
+const Label = ({
+  label,
+  children,
+  className,
+  id,
+}: {
+  label: boolean,
+  children: any,
+  className?: string,
+  id: string,
+}) => {
+  return label ? (
+    <label className={className} htmlFor={id}>
+      {children}
+    </label>
+  ) : (
+    <span className={className}>{children}</span>
+  );
 };
 
 const FormElement = (props: Props) => {
@@ -20,7 +41,7 @@ const FormElement = (props: Props) => {
           'md:flex': props.inline,
         })}
       >
-        <label
+        <Label
           className={cn(
             'block text-gray-700 text-sm font-bold items-center mb-2',
             {
@@ -29,10 +50,11 @@ const FormElement = (props: Props) => {
               'md:w-1/4': props.inline,
             }
           )}
-          htmlFor={props.id}
+          label={!props.doNotLabel}
+          id={props.id}
         >
           {props.label}
-        </label>
+        </Label>
         <div
           className={cn({ 'md:w-3/4': props.inline, 'md:pl-2': props.inline })}
         >
@@ -50,6 +72,7 @@ const FormElement = (props: Props) => {
 
 FormElement.defaultProps = {
   label: '',
+  doNotLabel: false,
   error: '',
   inline: false,
   className: '',

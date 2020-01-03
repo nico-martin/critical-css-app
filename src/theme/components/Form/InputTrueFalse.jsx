@@ -6,20 +6,19 @@ import cn from 'classnames';
 import { ConnectForm } from './ConnectForm.jsx';
 import { uniqueId } from '@vendor/helpers.js';
 import { FormElement } from '@theme';
-
+import './InputTrueFalse.css';
 type Props = {
   name: string,
+  description: string,
   label: string,
   register: Object,
-  type?: 'text' | 'email' | 'tel',
-  placeholder?: string,
   className?: string,
   classNameLabel?: string,
   classNameInput?: string,
   inline?: boolean,
 };
 
-const Text = (props: Props) => {
+const InputTrueFalse = (props: Props) => {
   const [id] = useState(() => uniqueId(props.name));
   return (
     <ConnectForm>
@@ -27,20 +26,21 @@ const Text = (props: Props) => {
         <FormElement
           id={id}
           label={props.label}
+          doNotLabel
           Field={
-            <input
-              className={cn(
-                'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-                errors[props.name] ? 'border-red-500' : '',
-                props.classNameInput
-              )}
-              name={props.name}
-              id={id}
-              ref={register(props.register)}
-              placeholder={props.placeholder}
-              type={props.type}
-              disabled={props.disabled}
-            />
+            <span
+              className={cn('w-full input-true-false', props.classNameInput)}
+            >
+              <input
+                name={props.name}
+                id={id}
+                ref={register(props.register)}
+                placeholder={props.placeholder}
+                type="checkbox"
+                disabled={props.disabled}
+              />
+              <label htmlFor={id}>{props.description}</label>
+            </span>
           }
           error={errors[props.name] ? errors[props.name].message : false}
           inline={props.inline}
@@ -50,7 +50,7 @@ const Text = (props: Props) => {
   );
 };
 
-Text.defaultProps = {
+InputTrueFalse.defaultProps = {
   register: {},
   type: 'text',
   placeholder: '',
@@ -60,4 +60,4 @@ Text.defaultProps = {
   inline: false,
 };
 
-export default Text;
+export default InputTrueFalse;

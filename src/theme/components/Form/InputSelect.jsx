@@ -12,7 +12,6 @@ type Props = {
   label: string,
   register: Object,
   options: Object,
-  value?: string,
   placeholder?: string,
   emptyOption?: boolean,
   className?: string,
@@ -23,27 +22,25 @@ type Props = {
 
 const Select = (props: Props) => {
   const [id] = useState(() => uniqueId(props.name));
-  const [name] = useState(() => uniqueId(props.name, 'form'));
   return (
     <ConnectForm>
       {({ register, errors }) => (
         <FormElement
           id={id}
           label={props.label}
-          error={errors[name] ? errors[name].message : false}
+          error={errors[props.name] ? errors[props.name].message : false}
           inline={props.inline}
           Field={
             <span className="relative">
               <select
                 className={cn(
                   'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
-                  errors[name] ? 'border-red-500' : '',
+                  errors[props.name] ? 'border-red-500' : '',
                   props.classNameInput
                 )}
-                name={name}
+                name={props.name}
                 id={id}
                 ref={register(props.register)}
-                defaultValue={props.value}
               >
                 {props.emptyOption && (
                   <option value="" disabled>
@@ -76,7 +73,6 @@ const Select = (props: Props) => {
 Select.defaultProps = {
   register: {},
   emptyOption: false,
-  value: '',
   placeholder: '',
   className: '',
   classNameLabel: '',

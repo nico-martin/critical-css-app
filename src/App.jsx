@@ -9,7 +9,7 @@ import idb from '@store/storeIDB';
 import axios from 'axios';
 import { Provider, connect } from 'unistore/preact';
 import { store, storeUserActions } from '@store';
-import Onboarding from '@app/Onboarding/Onboadring.jsx';
+import Onboarding from '@app/Onboarding/Onboading.jsx';
 import Page from '@app/Page.jsx';
 
 const App = connect(
