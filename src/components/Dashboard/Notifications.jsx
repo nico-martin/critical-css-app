@@ -13,21 +13,25 @@ const Notifications = ({ user }: { user: User }) => {
   const { formatMessage } = useIntl();
 
   useEffect(() => {
-    if (user.passwordTemp) {
-      setNotification({
-        ...notifications,
-        passwordTemp: (
-          <p>
-            {formatMessage(
-              { id: 'notification.password' },
-              { link: <Link href="/profile">Profile</Link> }
-            )}
-          </p>
-        ),
-      });
-    } else {
-      // todo: remove notification
-    }
+    setNotification({
+      ...notifications,
+      passwordTemp: user.passwordTemp ? (
+        <p>
+          {formatMessage(
+            { id: 'notification.password' },
+            {
+              link: (
+                <Link href="/profile">
+                  {formatMessage({ id: 'notification.password.link' })}
+                </Link>
+              ),
+            }
+          )}
+        </p>
+      ) : (
+        false
+      ),
+    });
   }, [user]);
 
   if (Object.keys(notifications).length === 0) {
@@ -36,9 +40,12 @@ const Notifications = ({ user }: { user: User }) => {
 
   return (
     <div className="mt-2">
-      {Object.values(notifications).map(content => (
-        <Notification className="mt-2">{content}</Notification>
-      ))}
+      {Object.values(notifications).map(content => {
+        if (!content) {
+          return;
+        }
+        return <Notification className="mt-2">{content}</Notification>;
+      })}
     </div>
   );
 };

@@ -29,3 +29,7 @@ h4 {
 h5 {
   @apply text-base;
 }
+
+p a {
+  @apply underline;
+}
