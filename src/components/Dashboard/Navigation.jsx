@@ -45,7 +45,10 @@ const Navigation = ({
           className="text-blue-500 hover:text-blue-800 cursor-pointer py-2 px-4"
           onClick={() => setUserMenu(!userMenu)}
         >
-          {user.firstname} {user.lastname}{' '}
+          <b>
+            {user.firstname} {user.lastname}
+          </b>{' '}
+          ({formatMessage({ id: 'user.credits' }, { credits: user.credits })}){' '}
           <Icon icon="arrow" rotate={userMenu ? 180 : 0} />
         </button>
         {userMenu && (

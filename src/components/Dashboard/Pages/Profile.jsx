@@ -2,8 +2,8 @@
 
 import { h } from 'preact';
 import { useIntl } from 'react-intl';
-import ProfileEdit from './ProfileEdit.jsx';
-import ProfilePassword from './ProfilePassword.jsx';
+import ProfileEdit from './Profile/Edit.jsx';
+import ProfilePassword from './Profile/Password.jsx';
 
 import Page from './Page.jsx';
 
