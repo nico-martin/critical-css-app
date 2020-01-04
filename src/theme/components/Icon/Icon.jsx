@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h, Fragment } from 'preact';
+import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import cn from 'classnames';
 

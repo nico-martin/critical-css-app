@@ -2,6 +2,9 @@
 
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
+import { useIntl } from 'react-intl';
+import type { User } from '@vendor/types';
+import { connect } from 'unistore/preact';
 import {
   Button,
   Form,
@@ -10,11 +13,19 @@ import {
   FormSuccess,
   InputText,
 } from '@theme';
-import axios from 'axios';
 import { apiBase } from '@vendor/config';
-import { useIntl } from 'react-intl';
+import axios from 'axios';
+import { storeUserActions } from '@store/index';
 
-const PasswordReset = ({ setSignIn }: { setSignIn: Function }) => {
+const ProfileEdit = ({
+  user,
+  fetchMe,
+  className = '',
+}: {
+  user: User,
+  fetchMe: Function,
+  className: string,
+}) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
   const [success: string, setSuccess] = useState('');
@@ -22,31 +33,36 @@ const PasswordReset = ({ setSignIn }: { setSignIn: Function }) => {
 
   return (
     <Form
+      className={className}
+      defaultValues={{
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+      }}
       onSubmit={data => {
         setError('');
         setSuccess('');
         setFormProcessing(true);
         axios
-          .post(`${apiBase}user/reset-password/`, {
+          .put(`${apiBase}user/${user.id}/`, {
             email: data.email,
+            firstname: data.firstname,
+            lastname: data.lastname,
           })
           .then(resp => {
-            if (resp.data.updated) {
-              setSuccess(formatMessage({ id: 'onboarding.resetpw.success' }));
-            } else {
-              setError(formatMessage({ id: 'onboarding.resetpw.failed' }));
-            }
             setFormProcessing(false);
+            setSuccess(formatMessage({ id: 'user.profile.update.success' }));
+            fetchMe();
           })
           .catch(err => {
-            setError(formatMessage({ id: 'onboarding.resetpw.failed' }));
+            setError(formatMessage({ id: 'user.profile.update.failed' }));
             setFormProcessing(false);
           });
       }}
     >
       <InputText
         name="email"
-        label={formatMessage({ id: 'onboarding.credentials.email' })}
+        label={formatMessage({ id: 'user.email' })}
         register={{
           required: formatMessage({ id: 'form.required' }),
           pattern: {
@@ -55,29 +71,36 @@ const PasswordReset = ({ setSignIn }: { setSignIn: Function }) => {
           },
         }}
         type="email"
+        inline
       />
-      <p className="text-sm">
-        {formatMessage({ id: 'onboarding.resetpw.desc' })}
-      </p>
+      <InputText
+        name="firstname"
+        label={formatMessage({ id: 'user.firstname' })}
+        register={{
+          required: formatMessage({ id: 'form.required' }),
+        }}
+        inline
+      />
+      <InputText
+        name="lastname"
+        label={formatMessage({ id: 'user.lastname' })}
+        register={{
+          required: formatMessage({ id: 'form.required' }),
+        }}
+        inline
+      />
       {error !== '' && <FormError>{error}</FormError>}
       {success !== '' && <FormSuccess>{success}</FormSuccess>}
       <FormControls>
         <Button
-          text={formatMessage({ id: 'onboarding.resetpw' })}
+          text={formatMessage({ id: 'form.save' })}
           type="submit"
           loading={formProcessing}
           style="primary"
-        />
-        <Button
-          text={formatMessage({ id: 'onboarding.signin' })}
-          style="nobutton"
-          type="Button"
-          onClick={() => setSignIn()}
-          small
         />
       </FormControls>
     </Form>
   );
 };
 
-export default PasswordReset;
+export default connect('user', storeUserActions)(ProfileEdit);

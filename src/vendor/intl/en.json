@@ -1,10 +1,15 @@
 {
   "form.required": "This field is required",
   "form.required.email": "This field should be a valid Email",
+  "form.save": "save",
   "footer.about": "critical-css.io is a service by {sayhello}",
   "modal.cancel": "cancel",
   "modal.confirm": "confirm",
   "modal.error": "Something went wrong",
+  "navigation.projects": "Projects",
+  "navigation.add": "Add Project",
+  "navigation.user.profile": "My account",
+  "navigation.user.logout": "Logout",
   "onboarding.signin": "SignIn",
   "onboarding.resetpw": "Reset Password",
   "onboarding.resetpw.desc": "You will receive an email with a temporary password.",
@@ -14,5 +19,14 @@
   "onboarding.credentials.email": "Email",
   "onboarding.credentials.password": "Password",
   "onboarding.credentials.rememberme": "Remember me",
-  "onboarding.credentials.invalid": "Email or password are not correct"
+  "onboarding.credentials.invalid": "Email or password are not correct",
+  "user.firstname": "Firstname",
+  "user.lastname": "Lastname",
+  "user.email": "Email",
+  "user.profile.update.success": "Your data has been successfully updated.",
+  "user.profile.update.failed": "An error has occurred while updating your data.",
+  "user.password.old": "old password",
+  "user.password.new": "new password",
+  "user.password.confirm": "new password confirm",
+  "user.password.change": "change password"
 }

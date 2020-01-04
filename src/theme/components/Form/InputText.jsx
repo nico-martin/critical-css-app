@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h } from 'preact';
+import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import cn from 'classnames';
 import { ConnectForm } from './ConnectForm.jsx';

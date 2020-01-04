@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h } from 'preact';
+import { h } from 'preact';
 import cn from 'classnames';
 import { useForm, useFormContext, FormContext } from 'react-hook-form';
 

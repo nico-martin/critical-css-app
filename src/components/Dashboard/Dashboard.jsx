@@ -1,16 +1,27 @@
 // @flow
 
-import { render, h } from 'preact';
-import React from 'react';
+import { h } from 'preact';
 import { useIntl } from 'react-intl';
+import { Router } from 'preact-router';
+import Navigation from './Navigation.jsx';
+import PagesProfile from './Pages/Profile.jsx';
 
-const Page = () => {
+const Dashboard = () => {
   const { formatMessage } = useIntl();
 
   return (
     <div className="w-full max-w-4xl">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h1>Test</h1>
+        <Navigation />
+        <Router>
+          <div className="app__content" path="/">
+            Page /
+          </div>
+          <div className="app__content" path="/add/">
+            Page /add/
+          </div>
+          <PagesProfile path="/profile" />
+        </Router>
       </div>
       <p className="text-center text-gray-500 text-xs m-auto max-w-2xl">
         {formatMessage(
@@ -28,4 +39,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Dashboard;

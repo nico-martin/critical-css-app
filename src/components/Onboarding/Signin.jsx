@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h } from 'preact';
+import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import {
   Button,
@@ -17,10 +17,13 @@ import { useIntl } from 'react-intl';
 import { connect } from 'unistore/preact';
 import { storeUserActions } from '@store/index';
 
-const SignIn = connect(
-  'user',
-  storeUserActions
-)(({ setResetPw, fetchMe }: { setResetPw: Function, fetchMe: Function }) => {
+const SignIn = ({
+  setResetPw,
+  fetchMe,
+}: {
+  setResetPw: Function,
+  fetchMe: Function,
+}) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
   const { formatMessage } = useIntl();
@@ -95,6 +98,6 @@ const SignIn = connect(
       </FormControls>
     </Form>
   );
-});
+};
 
-export default SignIn;
+export default connect('user', storeUserActions)(SignIn);

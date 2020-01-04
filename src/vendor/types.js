@@ -8,6 +8,7 @@ type UserObject = {
   firstname: string,
   lastname: string,
   credits: number,
+  passwordTemp: boolean,
   projects: Array<Project>,
 };
 

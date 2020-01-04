@@ -1,6 +1,6 @@
 // @flow
 
-import { render, h } from 'preact';
+import { h } from 'preact';
 import { createPortal } from 'preact/compat';
 
 import cn from 'classnames';
