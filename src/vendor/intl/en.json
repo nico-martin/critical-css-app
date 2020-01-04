@@ -28,5 +28,8 @@
   "user.password.old": "old password",
   "user.password.new": "new password",
   "user.password.confirm": "new password confirm",
-  "user.password.change": "change password"
+  "user.password.change": "change password",
+  "user.password.change.success": "The password was successfully changed.",
+  "user.password.change.failed": "An error has occurred while updating your password.",
+  "user.password.change.missmatch": "The password does not match the confirmation."
 }

@@ -4,60 +4,62 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { connect } from 'unistore/preact';
-import { Button, Form, FormControls, FormError, InputText } from '@theme';
+import {
+  Button,
+  Form,
+  FormControls,
+  FormError,
+  FormSuccess,
+  InputText,
+} from '@theme';
 import type { User } from '@vendor/types';
+import axios from 'axios';
+import { apiBase } from '@vendor/config';
+import { storeUserActions } from '@store/index';
 
 const ProfilePassword = ({
   user,
+  fetchMe,
   className = '',
 }: {
   user: User,
+  fetchMe: Function,
   className: string,
 }) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
+  const [success: string, setSuccess] = useState('');
   const { formatMessage } = useIntl();
 
   return (
     <Form
       className={className}
       onSubmit={data => {
-        console.log(data);
-        /*
-          setError('');
-          setFormProcessing(true);
-          axios
-            .post(`${apiBase}user/signin/`, {
-              email: data.email,
-              password: data.password,
-              remember: data.remember,
-            })
-            .then(resp => {
-              data.remember && idb.set('jwt', resp.data.token);
-              axios.defaults.headers.common = {
-                Authorization: 'Bearer ' + resp.data.token,
-              };
-              fetchMe();
-            })
-            .catch(err => {
-              setError(formatMessage({ id: 'onboarding.credentials.invalid' }));
-              setFormProcessing(false);
-            });
-           */
+        setError('');
+        setSuccess('');
+        if (data.password !== data.confirm) {
+          setError(formatMessage({ id: 'user.password.change.missmatch' }));
+          return;
+        }
+        setFormProcessing(true);
+        axios
+          .put(`${apiBase}user/password/${user.id}/`, {
+            password: data.password,
+          })
+          .then(resp => {
+            setFormProcessing(false);
+            setSuccess(formatMessage({ id: 'user.password.change.success' }));
+            fetchMe();
+          })
+          .catch(err => {
+            setError(formatMessage({ id: 'user.password.change.failed' }));
+            setFormProcessing(false);
+          });
       }}
     >
       <h2 className="mb-8">{formatMessage({ id: 'user.password.change' })}</h2>
       <InputText
-        name="oldpassword"
-        label={formatMessage({ id: 'user.password.old' })}
-        register={{
-          required: formatMessage({ id: 'form.required' }),
-        }}
-        type="password"
-        inline
-      />
-      <InputText
-        name="newpassword"
+        name="password"
         label={formatMessage({ id: 'user.password.new' })}
         register={{
           required: formatMessage({ id: 'form.required' }),
@@ -75,6 +77,7 @@ const ProfilePassword = ({
         inline
       />
       {error !== '' && <FormError>{error}</FormError>}
+      {success !== '' && <FormSuccess>{success}</FormSuccess>}
       <FormControls>
         <Button
           text={formatMessage({ id: 'user.password.change' })}
@@ -87,4 +90,4 @@ const ProfilePassword = ({
   );
 };
 
-export default connect('user')(ProfilePassword);
+export default connect('user', storeUserActions)(ProfilePassword);
