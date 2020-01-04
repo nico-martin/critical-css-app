@@ -7,6 +7,9 @@ import Navigation from './Navigation.jsx';
 import Notifications from './Notifications.jsx';
 import PagesProfile from './Pages/Profile.jsx';
 import ProjectsAdd from './Pages/ProjectsAdd.jsx';
+import Projects from './Pages/Projects.jsx';
+import ProjectSingle from './Pages/ProjectSingle.jsx';
+import FourOFour from './Pages/FourOFour.jsx';
 
 const Dashboard = () => {
   const { formatMessage } = useIntl();
@@ -17,11 +20,12 @@ const Dashboard = () => {
         <Navigation />
         <Notifications />
         <Router>
-          <div className="app__content" path="/">
-            Page /
-          </div>
+          <Projects path="/" />
+          <Projects path="/project" />
+          <ProjectSingle path="/project/:id" />
           <ProjectsAdd path="/add/" />
           <PagesProfile path="/profile" />
+          <FourOFour default />
         </Router>
       </div>
       <p className="text-center text-gray-500 text-xs m-auto max-w-2xl">

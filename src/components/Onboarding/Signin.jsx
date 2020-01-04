@@ -20,9 +20,11 @@ import { storeUserActions } from '@store/index';
 const SignIn = ({
   setResetPw,
   fetchMe,
+  fetchProjects,
 }: {
   setResetPw: Function,
   fetchMe: Function,
+  fetchProjects: Function,
 }) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
   const [error: string, setError] = useState('');
@@ -46,6 +48,7 @@ const SignIn = ({
               Authorization: 'Bearer ' + resp.data.token,
             };
             fetchMe();
+            fetchProjects();
           })
           .catch(err => {
             setError(formatMessage({ id: 'onboarding.credentials.invalid' }));

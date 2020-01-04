@@ -51,13 +51,13 @@ module.exports = (env, argv) => {
         chunkFilename: dev
           ? 'assets/[name].[id].css'
           : 'assets/[name].[id].[hash].css',
-      }),
+      }) /*
       new CopyWebpackPlugin([
         {
           from: 'src/static',
           to: 'static',
         },
-      ]),
+      ]),*/,
       new HtmlWebpackPlugin({
         title: app.title,
         description: app.description,

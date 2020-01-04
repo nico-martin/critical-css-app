@@ -9,6 +9,7 @@ import { defaultLocale, locales } from '@vendor/intl';
 
 const initialState = {
   user: {},
+  projects: false,
   intlLocale: defaultLocale,
   intlMessages: locales[defaultLocale][1],
 };
@@ -22,11 +23,27 @@ export const storeUserActions = store => ({
     try {
       const resp = await axios.get(`${apiBase}user/me/`);
       if (resp.status === 200) {
-        return { user: resp.data };
+        return {
+          user: resp.data,
+        };
       }
     } catch (e) {
       return {
         user: false,
+      };
+    }
+  },
+  fetchProjects: async ({ projects }) => {
+    try {
+      const resp = await axios.get(`${apiBase}user/me/projects/`);
+      if (resp.status === 200) {
+        return {
+          projects: resp.data,
+        };
+      }
+    } catch (e) {
+      return {
+        projects: [],
       };
     }
   },
