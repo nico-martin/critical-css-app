@@ -24,7 +24,7 @@ const Modal = ({ title, onClose, children, width = 'large' }: Props) => {
         className={cn(
           'bg-white w-11/12 mx-auto rounded shadow-lg z-50 overflow-y-auto',
           {
-            'max-w-4xl': width === 'large',
+            'max-w-3xl': width === 'large',
             'max-w-2xl': width === 'medium',
             'max-w-md': width === 'small',
           }

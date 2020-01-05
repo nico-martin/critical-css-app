@@ -18,6 +18,7 @@ import { apiBase } from '@vendor/config';
 import { connect } from 'unistore/preact';
 import { storeUserActions } from '@store/index';
 import type { User } from '@vendor/types';
+import { route } from 'preact-router';
 
 const ProjectsAdd = ({ user, fetchMe }: { user: User, fetchMe: Function }) => {
   const [formProcessing: boolean, setFormProcessing] = useState(false);
@@ -41,6 +42,7 @@ const ProjectsAdd = ({ user, fetchMe }: { user: User, fetchMe: Function }) => {
               setFormProcessing(false);
               setSuccess(formatMessage({ id: 'project.add.success' }));
               fetchMe();
+              route(`/project/${resp.data.id}`);
             })
             .catch(err => {
               setError(formatMessage({ id: 'project.add.failed' }));

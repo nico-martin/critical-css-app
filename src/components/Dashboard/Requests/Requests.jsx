@@ -4,7 +4,6 @@ import { h } from 'preact';
 import type { Request } from '@vendor/types';
 import { useIntl } from 'react-intl';
 import RequestsSingle from '@app/Dashboard/Requests/Single.jsx';
-import { Button } from '@theme/index';
 
 const Requests = ({ requests, ...rest }: { requests: Array<Request> }) => {
   const { formatMessage } = useIntl();
