@@ -5,5 +5,6 @@ export const navigation = {
   add: '/add',
 };
 
-export const apiBase = 'https://api.critical-css.io/';
-//export const apiBase = 'http://localhost:9092/';
+export const apiBase = false
+  ? 'https://api.critical-css.io/'
+  : 'http://localhost:9092/';

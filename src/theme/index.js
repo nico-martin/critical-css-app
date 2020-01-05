@@ -13,5 +13,6 @@ export { default as InputSelect } from './components/Form/InputSelect.jsx';
 // export { default as InputRadio } from './components/Form/InputRadio.jsx';
 export { default as InputTrueFalse } from './components/Form/InputTrueFalse.jsx';
 export { default as Modal } from './components/Modal/Modal.jsx';
+export { default as ModalControls } from './components/Modal/ModalControls.jsx';
 export { default as ModalConfirm } from './components/Modal/ModalConfirm.jsx';
 export { default as Notification } from './components/Misc/Notification.jsx';

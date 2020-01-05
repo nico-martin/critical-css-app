@@ -9,7 +9,7 @@ import { connect } from 'unistore/preact';
 import { storeUserActions } from '@store/index';
 import type { Project } from '@vendor/types';
 
-import ProjectsList from './Projects/List.jsx';
+import ProjectsList from '@app/Dashboard/Projects/List.jsx';
 
 const Projects = ({
   projects,

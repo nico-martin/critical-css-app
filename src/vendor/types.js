@@ -3,6 +3,8 @@
 export type Request = {
   file: string,
   generated: string,
+  url: string,
+  sizes: string,
 };
 
 export type Project = {
