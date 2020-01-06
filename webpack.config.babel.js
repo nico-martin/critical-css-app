@@ -5,9 +5,7 @@ require('dotenv').config();
 import app from './app.json';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import tailwindcss from 'tailwindcss';
 
@@ -51,13 +49,7 @@ module.exports = (env, argv) => {
         chunkFilename: dev
           ? 'assets/[name].[id].css'
           : 'assets/[name].[id].[hash].css',
-      }) /*
-      new CopyWebpackPlugin([
-        {
-          from: 'src/static',
-          to: 'static',
-        },
-      ]),*/,
+      }),
       new HtmlWebpackPlugin({
         title: app.title,
         description: app.description,
@@ -75,30 +67,6 @@ module.exports = (env, argv) => {
               useShortDoctype: true,
             },
       }),
-      /*
-      new FaviconsWebpackPlugin({
-        logo: `${dirSrc}/static/img/bscyb-logo.png`,
-        prefix: 'assets/icon/[hash]/',
-        emitStats: true,
-        statsFilename: 'assets/icon/iconstats-[hash].json',
-        persistentCache: true,
-        inject: true,
-        background: app.colorbkg,
-        title: app.title,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          opengraph: false,
-          twitter: true,
-          yandex: false,
-          windows: false,
-        },
-      }),
-       */
     ],
     module: {
       rules: [

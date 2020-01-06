@@ -33,7 +33,6 @@ const SignIn = ({
   return (
     <Form
       onSubmit={data => {
-        console.log(data);
         setError('');
         setFormProcessing(true);
         axios
@@ -43,7 +42,9 @@ const SignIn = ({
             remember: data.remember,
           })
           .then(resp => {
-            data.remember && idb.set('jwt', resp.data.token);
+            if (data.remember) {
+              idb.set('jwt', resp.data.token);
+            }
             axios.defaults.headers.common = {
               Authorization: 'Bearer ' + resp.data.token,
             };

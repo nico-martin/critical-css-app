@@ -62,7 +62,7 @@ const ProjectsSingleModal = ({
         setLoading(false);
         fetchMe();
         fetchProjects();
-        setCss(resp.data.css);
+        setCss(resp.data);
       })
       .catch(error => {
         setLoading(false);
