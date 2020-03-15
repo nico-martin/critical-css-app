@@ -47,7 +47,6 @@ export const storeUserActions = store => ({
       };
     }
   },
-  setEmptyUser: ({ user }) => ({ user: {} }),
   setFalseUser: ({ user }) => {
     console.log('USER', user);
     return { user: false };

@@ -27,7 +27,7 @@ const App = connect(
     }
   }, []);
 
-  console.log(Object.keys(user));
+  console.log(user, Object.keys(user), Object.keys(user).length);
   if (Object.keys(user).length === 0) {
     return <Loader className="text-3xl mt-8" />;
   }
