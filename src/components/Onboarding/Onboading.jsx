@@ -4,7 +4,7 @@ import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
-import OnboardingSignIn from './SignIn.jsx';
+import OnboardingSignIn from './Signin.jsx';
 import OnboardingResetPassword from './ResetPassword.jsx';
 
 const onboarding = () => {
