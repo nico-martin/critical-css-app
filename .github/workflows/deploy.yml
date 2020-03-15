@@ -9,23 +9,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.17.0]
+    
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.17.0'
-      - run: yarn install
-      - run: yarn prod
-      - uses: actions/checkout@master
-        with:
-          fetch-depth: 2
+          node-version: '10.x'
+      - name: Project setup
+        run: yarn install
+      - name: Compile and minify for production
+        run: yarn prod
       - name: Upload ftp
         uses: SamKirkland/FTP-Deploy-Action@3.0.0
         with:
           local-dir: dist/
-          ftp-server: ftp://s009.cyon.net/home/sayhello/public_html/critical-css-api/app.critical-css.io
+          ftp-server: ftp://s009.cyon.net
           ftp-username: ${{ secrets.FTP_USER }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
