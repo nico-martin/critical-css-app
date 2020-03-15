@@ -38,7 +38,7 @@
   "project.request.create": "Create Request",
   "project.request.create.do": "Make Request",
   "project.request.create.urlError": "The URL has to start with \"{url}\"",
-  "project.request.create.error": "The request failed",
+  "project.request.create.error": "The request failed ({reason})",
   "project.request.show": "Show Request",
   "project.request.date": "Generated",
   "project.request.url": "for URL",

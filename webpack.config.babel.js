@@ -7,6 +7,7 @@ import app from './app.json';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import tailwindcss from 'tailwindcss';
 
 module.exports = (env, argv) => {
@@ -44,6 +45,13 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin({
         cleanStaleWebpackAssets: false,
       }),
+      new CopyWebpackPlugin([
+        {
+          from: 'src/.htaccess.example',
+          to: './.htaccess',
+          toType: 'file',
+        },
+      ]),
       new MiniCssExtractPlugin({
         filename: dev ? 'assets/[name].css' : 'assets/[name].[hash].css',
         chunkFilename: dev

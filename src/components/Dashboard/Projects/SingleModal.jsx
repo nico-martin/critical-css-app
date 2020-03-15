@@ -66,7 +66,12 @@ const ProjectsSingleModal = ({
       })
       .catch(error => {
         setLoading(false);
-        setError(formatMessage({ id: 'project.request.create.error' }));
+        setError(
+          formatMessage(
+            { id: 'project.request.create.error' },
+            { reason: error.response.data.code }
+          )
+        );
       });
   };
 
