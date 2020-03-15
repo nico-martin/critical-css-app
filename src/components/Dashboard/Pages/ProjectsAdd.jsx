@@ -36,13 +36,13 @@ const ProjectsAdd = ({ user, fetchMe }: { user: User, fetchMe: Function }) => {
           axios
             .put(`${apiBase}project/`, {
               url: data.url,
-              userID: user.id,
+              userID: user.ID,
             })
             .then(resp => {
               setFormProcessing(false);
               setSuccess(formatMessage({ id: 'project.add.success' }));
               fetchMe();
-              route(`/project/${resp.data.id}`);
+              route(`/project/${resp.data.ID}`);
             })
             .catch(err => {
               setError(formatMessage({ id: 'project.add.failed' }));
@@ -56,7 +56,7 @@ const ProjectsAdd = ({ user, fetchMe }: { user: User, fetchMe: Function }) => {
           register={{
             required: formatMessage({ id: 'form.required' }),
             pattern: {
-              value: /^((https|http):\/\/([a-z0-9.\/?]*))$/,
+              value: /^((https|http):\/\/([a-z0-9.\/?\-]*))$/,
               message: formatMessage({ id: 'form.required.url' }),
             },
           }}

@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: yarn install
+      - run: yarn prod
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 2
+        - name: Upload ftp
+          uses: SamKirkland/FTP-Deploy-Action@3.0.0
+          with:
+            ftp-server: ${{ secrets.FTP_HOST }}${{ secrets.FTP_REMOTEFOLDER }}
+            ftp-username: ${{ secrets.FTP_USER }}
+            ftp-password: ${{ secrets.FTP_PASSWORD }}

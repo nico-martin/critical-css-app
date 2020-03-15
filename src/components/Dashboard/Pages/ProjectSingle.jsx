@@ -35,7 +35,7 @@ const ProjectSingle = ({
 
   useEffect(() => {
     const projectsFiltered = projects.filter(project =>
-      project.id === id ? project : false
+      project.ID === id ? project : false
     );
     if (projectsFiltered.length) {
       setProject(projectsFiltered[0]);

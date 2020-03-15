@@ -23,6 +23,7 @@ const PasswordReset = ({ setSignIn }: { setSignIn: Function }) => {
   return (
     <Form
       onSubmit={data => {
+        console.log('data', data);
         setError('');
         setSuccess('');
         setFormProcessing(true);

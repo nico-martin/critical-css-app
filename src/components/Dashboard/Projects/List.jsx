@@ -26,7 +26,7 @@ const ProjectsList = ({
     <p className="w-2/12 text-right">{project.requests.length}</p>
     <Link
       className="w-1/12 text-right text-base pr-4"
-      href={`/project/${project.id}`}
+      href={`/project/${project.ID}`}
     >
       <Icon icon="mdi/arrow-right" />
     </Link>

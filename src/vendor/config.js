@@ -5,6 +5,7 @@ export const navigation = {
   add: '/add',
 };
 
-export const apiBase = true
-  ? 'https://api.critical-css.io/'
-  : 'http://localhost:9092/';
+export const isDev = window.location.href.indexOf('localhost:') !== -1;
+export const apiBase = isDev
+  ? 'http://localhost:9092/'
+  : 'https://api.critical-css.io/';

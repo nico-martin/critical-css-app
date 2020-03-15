@@ -43,7 +43,7 @@ const ProfilePassword = ({
         }
         setFormProcessing(true);
         axios
-          .put(`${apiBase}user/password/${user.id}/`, {
+          .put(`${apiBase}user/password/${user.ID}/`, {
             password: data.password,
           })
           .then(resp => {

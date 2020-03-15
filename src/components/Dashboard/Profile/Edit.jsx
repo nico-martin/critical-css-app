@@ -44,7 +44,7 @@ const ProfileEdit = ({
         setSuccess('');
         setFormProcessing(true);
         axios
-          .put(`${apiBase}user/${user.id}/`, {
+          .put(`${apiBase}user/${user.ID}/`, {
             email: data.email,
             firstname: data.firstname,
             lastname: data.lastname,
