@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [10.17.0]
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: '10.17.0'
       - run: yarn install
       - run: yarn prod
       - uses: actions/checkout@master
