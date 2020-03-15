@@ -27,22 +27,20 @@ const Button = ({
   large,
   small,
   ...rest
-}: Props) => {
-  return (
-    <button
-      className={cn(className, 'button', `button--${style}`, {
-        'button--loading': loading,
-        'button--large': large,
-        'button--small': small,
-      })}
-      disabled={loading || disabled}
-      {...rest}
-    >
-      {icon !== '' && <Icon icon={icon} className="button__icon" />}
-      {text}
-    </button>
-  );
-};
+}: Props) => (
+  <button
+    className={cn(className, 'button', `button--${style}`, {
+      'button--loading': loading,
+      'button--large': large,
+      'button--small': small,
+    })}
+    disabled={loading || disabled}
+    {...rest}
+  >
+    {icon !== '' && <Icon icon={icon} className="button__icon" />}
+    {text}
+  </button>
+);
 
 Button.defaultProps = {
   className: '',

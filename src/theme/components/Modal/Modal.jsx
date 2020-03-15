@@ -13,8 +13,8 @@ type Props = {
   children: any,
   width?: 'large' | 'medium' | 'small',
 };
-const Modal = ({ title, onClose, children, width = 'large' }: Props) => {
-  return createPortal(
+const Modal = ({ title, onClose, children, width = 'large' }: Props) =>
+  createPortal(
     <div className="fixed w-full h-full top-0 left-0 flex items-center justify-center">
       <div
         className="absolute w-full h-full bg-gray-900 opacity-50 cursor-pointer"
@@ -54,6 +54,5 @@ const Modal = ({ title, onClose, children, width = 'large' }: Props) => {
     </div>,
     container
   );
-};
 
 export default Modal;

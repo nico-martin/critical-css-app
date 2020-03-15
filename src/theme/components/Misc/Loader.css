@@ -1,0 +1,19 @@
+.loader {
+  @apply relative;
+  width: 1em;
+  height: 1em;
+
+  &::after {
+    @apply absolute border-black border-2 rounded-full block;
+    content: '';
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    margin-left: -50%;
+    margin-top: -50%;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    animation: spinner 700ms infinite linear;
+  }
+}

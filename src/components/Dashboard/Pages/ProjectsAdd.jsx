@@ -42,6 +42,7 @@ const ProjectsAdd = ({ user, fetchMe }: { user: User, fetchMe: Function }) => {
               setFormProcessing(false);
               setSuccess(formatMessage({ id: 'project.add.success' }));
               fetchMe();
+              console.log(resp.data);
               route(`/project/${resp.data.ID}`);
             })
             .catch(err => {

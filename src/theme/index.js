@@ -16,3 +16,4 @@ export { default as Modal } from './components/Modal/Modal.jsx';
 export { default as ModalControls } from './components/Modal/ModalControls.jsx';
 export { default as ModalConfirm } from './components/Modal/ModalConfirm.jsx';
 export { default as Notification } from './components/Misc/Notification.jsx';
+export { default as Loader } from './components/Misc/Loader.jsx';

@@ -7,6 +7,7 @@ import idb from '@store/storeIDB';
 import axios from 'axios';
 import { Provider, connect } from 'unistore/preact';
 import { store, storeUserActions } from '@store';
+import { Loader } from '@theme';
 import Onboarding from '@app/Onboarding/Onboading.jsx';
 import Dashboard from '@app/Dashboard/Dashboard.jsx';
 
@@ -26,12 +27,12 @@ const App = connect(
     }
   }, []);
 
-  if (user === false) {
-    return <Onboarding />;
+  if (Object.keys(user).length === 0) {
+    return <Loader className="text-3xl mt-8" />;
   }
 
-  if (Object.keys(user).length === 0) {
-    return;
+  if (user === false) {
+    return <Onboarding />;
   }
 
   return <Dashboard />;
