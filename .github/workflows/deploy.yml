@@ -22,9 +22,9 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 2
-        - name: Upload ftp
-          uses: SamKirkland/FTP-Deploy-Action@3.0.0
-          with:
-            ftp-server: ${{ secrets.FTP_HOST }}${{ secrets.FTP_REMOTEFOLDER }}
-            ftp-username: ${{ secrets.FTP_USER }}
-            ftp-password: ${{ secrets.FTP_PASSWORD }}
+      - name: Upload ftp
+        uses: SamKirkland/FTP-Deploy-Action@3.0.0
+        with:
+          ftp-server: ${{ secrets.FTP_HOST }}${{ secrets.FTP_REMOTEFOLDER }}
+          ftp-username: ${{ secrets.FTP_USER }}
+          ftp-password: ${{ secrets.FTP_PASSWORD }}
