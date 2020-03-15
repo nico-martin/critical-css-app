@@ -63,7 +63,7 @@
     "license": "GPL-3.0+",
     "scripts": {
         "dev": "yarn serve & yarn build",
-        "prod": "yarn update & yarn build:prod",
+        "prod": "yarn build:prod",
         "build": "webpack -d --watch",
         "build:prod": "webpack -p",
         "update": "node .node/update-package.js",
