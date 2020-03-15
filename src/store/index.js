@@ -48,7 +48,10 @@ export const storeUserActions = store => ({
     }
   },
   setEmptyUser: ({ user }) => ({ user: {} }),
-  setFalseUser: ({ user }) => ({ user: false }),
+  setFalseUser: ({ user }) => {
+    console.log('USER', user);
+    return { user: false };
+  },
 });
 
 export const storeLocaleActions = store => ({
