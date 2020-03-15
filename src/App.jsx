@@ -27,13 +27,12 @@ const App = connect(
     }
   }, []);
 
-  console.log(user, Object.keys(user), Object.keys(user).length);
-  if (Object.keys(user).length === 0) {
-    return <Loader className="text-3xl mt-8" />;
-  }
-
   if (user === false) {
     return <Onboarding />;
+  }
+
+  if (Object.keys(user).length === 0) {
+    return <Loader className="text-3xl mt-8" />;
   }
 
   return <Dashboard />;
