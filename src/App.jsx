@@ -16,7 +16,9 @@ const App = connect(
   storeUserActions
 )(({ user, fetchMe, setFalseUser }) => {
   useEffect(async () => {
+    console.log('START');
     const jwt = await idb.get('jwt');
+    console.log('JWT', jwt);
     if (!jwt) {
       setFalseUser();
     } else {
